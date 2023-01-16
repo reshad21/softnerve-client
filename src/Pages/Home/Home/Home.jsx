@@ -2,12 +2,12 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div className='px-28'>
-            <div className="overflow-x-auto w-full my-7">
+        <div className='px-28 dark:bg-[#2f3541] dark:text-white'>
+            <div className="overflow-x-auto w-full pb-7">
                 <table className="table w-full">
 
                     <thead>
-                        <tr>
+                        <tr className='dark:text-slate-800'>
                             <th>
                                 <label>
                                     <input type="checkbox" className="checkbox" />
@@ -19,8 +19,9 @@ const Home = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
+                        <tr className='dark:text-slate-800'>
                             <th>
                                 <label>
                                     <input type="checkbox" className="checkbox" />
