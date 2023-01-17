@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { toast } from 'react-hot-toast';
 const Dashbord = () => {
     const handleProductForm = (e) => {
         e.preventDefault();
@@ -31,6 +31,7 @@ const Dashbord = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success:', data);
+                toast.success('product added Successfully.');
             })
             .catch((error) => {
                 console.error('Error:', error);
