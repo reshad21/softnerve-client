@@ -21,8 +21,23 @@ const Dashbord = () => {
             email,
             photo
         }
+        fetch('http://localhost:5000/student', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(studentInfo),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
 
-        console.log(form, studentInfo);
+
+        console.log(studentInfo);
     }
     return (
         <div className='mx-auto max-w-7xl'>
