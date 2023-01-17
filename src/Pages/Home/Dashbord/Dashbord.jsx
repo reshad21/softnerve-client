@@ -77,7 +77,6 @@ const Dashbord = () => {
                                 <input type="text" name='photo' placeholder="Permanent address" className="input input-bordered" required />
                             </div>
 
-
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
