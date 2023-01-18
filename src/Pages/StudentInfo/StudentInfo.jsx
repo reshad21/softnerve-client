@@ -22,8 +22,23 @@ const StudentInfo = () => {
         )
     }
     return (
-        <div>
+        <div className='px-28'>
             <h1>single student information:{student?.sname}</h1>
+            <div className="card lg:card-side bg-base-100 shadow-xl">
+                <figure><img src="https://placeimg.com/400/400/arch" alt="Album" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">{student?.sname}</h2>
+                    <p><label htmlFor="" className='font-bold'>Department:</label> CSE</p>
+                    <p><label htmlFor="" className='font-bold'>Father name:</label> {student?.fname}</p>
+                    <p><label htmlFor="" className='font-bold'>Mother name:</label> {student?.mname}</p>
+                    <p><label htmlFor="" className='font-bold'>Address:</label> {student?.address}</p>
+                    <p><label htmlFor="" className='font-bold'>Email:</label> {student?.email}</p>
+                    <p><label htmlFor="" className='font-bold'>Phone Number:</label> {student?.phoneNumber}</p>
+                    <div className="card-actions justify-end">
+                        <button className="btn btn-primary">Listen</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
