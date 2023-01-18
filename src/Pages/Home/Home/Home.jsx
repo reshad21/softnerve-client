@@ -1,6 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const Home = () => {
+    const { data: students = [], isLoading } = useQuery({
+        queryKey: ['student'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/student');
+            const data = await res.json();
+            return data;
+        }
+    })
+
+    if (isLoading) {
+        return (
+            <div className='bg-white flex items-end justify-center h-[200px]'>
+                <h1 className='text-2xl font-semibold text-slate-600'>Loading...</h1>
+            </div>
+        )
+    }
+
     return (
         <div className='px-28 dark:bg-[#2f3541] dark:text-white'>
             <div className="overflow-x-auto w-full pb-7">
@@ -21,37 +39,43 @@ const Home = () => {
                     </thead>
 
                     <tbody>
-                        <tr className='dark:text-slate-800'>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
-                            <td>
-                                <div className="flex items-center space-x-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="font-bold">Wyman Tear</div>
-                                        <span className="badge badge-ghost badge-sm">wyman@gmail.com</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Bangladesh
-                                <br />
-                                <span className="badge badge-ghost badge-sm">+880 1787170612</span>
-                            </td>
-                            <td>C.S.E</td>
-                            <th>
-                                <button className="btn btn-success btn-xs font-bold">Update</button>
-                                <button className="btn btn-warning btn-xs mx-2 font-bold">View</button>
-                                <button className="btn btn-secondary btn-xs font-bold">Delete</button>
-                            </th>
-                        </tr>
+                        {
+                            students?.map((student, i) => {
+                                return (
+                                    <tr className='dark:text-slate-800' key={student?._id}>
+                                        <th>
+                                            <label>
+                                                <p>{i + 1}</p>
+                                            </label>
+                                        </th>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={student?.photo} alt="" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className="font-bold">{student?.sname}</div>
+                                                    <span className="badge badge-ghost badge-sm">{student?.email}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            Bangladesh
+                                            <br />
+                                            <span className="badge badge-ghost badge-sm">{student?.phoneNumber}</span>
+                                        </td>
+                                        <td>C.S.E</td>
+                                        <th>
+                                            <button className="btn btn-success btn-xs font-bold">Update</button>
+                                            <button className="btn btn-warning btn-xs mx-2 font-bold">View</button>
+                                            <button className="btn btn-secondary btn-xs font-bold">Delete</button>
+                                        </th>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
 
                 </table>
