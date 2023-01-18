@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const { data: students = [], isLoading } = useQuery({
@@ -69,7 +70,9 @@ const Home = () => {
                                         <td>C.S.E</td>
                                         <th>
                                             <button className="btn btn-success btn-xs font-bold">Update</button>
-                                            <button className="btn btn-warning btn-xs mx-2 font-bold">View</button>
+                                            <Link to={`/student/${student?._id}`}>
+                                                <button className="btn btn-warning btn-xs mx-2 font-bold">View</button>
+                                            </Link>
                                             <button className="btn btn-secondary btn-xs font-bold">Delete</button>
                                         </th>
                                     </tr>
