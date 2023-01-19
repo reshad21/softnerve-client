@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-    const { data: students = [], isLoading } = useQuery({
+    const { data: students = [], isLoading, refetch } = useQuery({
         queryKey: ['student'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/student');
@@ -18,6 +18,20 @@ const Home = () => {
                 <h1 className='text-2xl font-semibold text-slate-600'>Loading...</h1>
             </div>
         )
+    }
+
+    const handleDelete = (student) => {
+        window.confirm(`are you sure?`);
+        console.log(student._id);
+        fetch(`http://localhost:5000/student/${student._id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch()
+                }
+            })
     }
 
     return (
@@ -73,7 +87,7 @@ const Home = () => {
                                             <Link to={`/student/${student?._id}`}>
                                                 <button className="btn btn-warning btn-xs mx-2 font-bold">View</button>
                                             </Link>
-                                            <button className="btn btn-secondary btn-xs font-bold">Delete</button>
+                                            <button onClick={() => handleDelete(student)} className="btn btn-secondary btn-xs font-bold">Delete</button>
                                         </th>
                                     </tr>
                                 )
