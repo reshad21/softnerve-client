@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
 const UpdateStudent = () => {
@@ -23,7 +24,41 @@ const UpdateStudent = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        console.log('updated');
+        const form = e.target;
+        const sname = form.sname.value;
+        const fname = form.fname.value;
+        const mname = form.mname.value;
+        const phoneNumber = form.phoneNumber.value;
+        const email = form.email.value;
+        const address = form.address.value;
+        // const photo = form.photo.value;
+
+        const studentInfo = {
+            phoneNumber,
+            address,
+            sname,
+            fname,
+            mname,
+            email,
+            // photo
+        }
+        console.log(studentInfo);
+
+        fetch(`http://localhost:5000/student/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(studentInfo),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                toast.success('product added Successfully.');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
     return (
         <div className='mx-auto max-w-7xl'>
@@ -72,12 +107,12 @@ const UpdateStudent = () => {
                                 </label>
                                 <input type="address" name='address' placeholder="Permanent address" className="input input-bordered" defaultValue={student?.address} />
                             </div>
-                            <div className="form-control">
+                            {/* <div className="form-control">
                                 <label className="label">
                                     <span className="label-text font-bold">Photo</span>
                                 </label>
                                 <input type="text" name='photo' placeholder="Permanent address" className="input input-bordered" />
-                            </div>
+                            </div> */}
 
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Update Information</button>
