@@ -4,6 +4,7 @@ import Main from '../../Layout/Main';
 import Dashbord from '../../Pages/Dashbord/Dashbord';
 import Home from '../../Pages/Home/Home/Home';
 import StudentInfo from '../../Pages/StudentInfo/StudentInfo';
+import UpdateStudent from '../../Pages/UpdateStudent/UpdateStudent';
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path: '/student/:sid',
                 element: <StudentInfo></StudentInfo>
+            },
+            {
+                path: '/updateStudent/:id',
+                element: <UpdateStudent></UpdateStudent>
             }
         ]
     },

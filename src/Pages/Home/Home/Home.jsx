@@ -83,7 +83,9 @@ const Home = () => {
                                         </td>
                                         <td>C.S.E</td>
                                         <th>
-                                            <button className="btn btn-success btn-xs font-bold">Update</button>
+                                            <Link to={`/updateStudent/${student?._id}`}>
+                                                <button className="btn btn-success btn-xs font-bold">Update</button>
+                                            </Link>
                                             <Link to={`/student/${student?._id}`}>
                                                 <button className="btn btn-warning btn-xs mx-2 font-bold">View</button>
                                             </Link>
