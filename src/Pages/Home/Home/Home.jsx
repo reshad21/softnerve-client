@@ -35,7 +35,10 @@ const Home = () => {
     }
 
     return (
-        <div className='px-28 dark:bg-[#2f3541] dark:text-white'>
+        <div className='px-28 py-8 dark:bg-[#2f3541] dark:text-white'>
+            <div>
+                <h1 className='text-3xl font-bold text-slate-700 dark:text-white'>All Student List:</h1>
+            </div>
             <div className="overflow-x-auto w-full pb-7">
                 <table className="table w-full">
 

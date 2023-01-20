@@ -73,11 +73,11 @@ const Dashbord = () => {
 
     }
     return (
-        <div className='mx-auto max-w-7xl'>
-            <div className="hero min-h-screen bg-base-200">
+        <div className='px-28 py-8 dark:bg-[#2f3541] dark:text-white'>
+            <div className="hero min-h-screen">
                 <div className="hero-content w-full flex flex-col">
                     <div>
-                        <h1 className='text-5xl font-bold text-slate-700'>Student Information</h1>
+                        <h1 className='text-5xl font-bold text-slate-700 dark:text-white'>Student Information</h1>
                     </div>
                     <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={handleProductForm}>

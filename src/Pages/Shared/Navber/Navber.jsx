@@ -26,14 +26,14 @@ const Navber = () => {
     };
 
     const menuItems = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/dashbord'>Dashbord</Link></li>
+        <li><Link to='/'><button className='btn btn-success btn-outline font-bold border-2'>Home</button></Link></li>
+        <li><Link to='/dashbord'><button className='btn btn-success btn-outline font-bold border-2'>Dashbord</button></Link></li>
     </>
     return (
         <div>
-            <div className="navbar bg-base-100 dark:bg-[#2f3541] dark:text-white">
+            <div className="navbar bg-[#d7dedf] dark:bg-[#2f3541] dark:text-white">
                 <div className="flex-1">
-                    <Link to='/' className="btn btn-ghost normal-case text-xl">SoftNerve</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-3xl">SoftNerve</Link>
                 </div>
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1">
