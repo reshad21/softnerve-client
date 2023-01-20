@@ -1,6 +1,8 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
 const Dashbord = () => {
+    const navigate = useNavigate();
     const imageHostKey = 'a5fac2a6ff064bf3f80d0506b3344941';
 
     const handleProductForm = (e) => {
@@ -24,6 +26,9 @@ const Dashbord = () => {
                     const photo = imgData.data.url;
                     // second now we work other input field
                     studentAllInfo(photo);
+                    form.reset();
+                    navigate('/');
+
                 }
             })
             .catch((error) => {

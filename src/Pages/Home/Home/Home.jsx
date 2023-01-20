@@ -77,9 +77,8 @@ const Home = () => {
                                             </div>
                                         </td>
                                         <td>
-                                            Bangladesh
-                                            <br />
-                                            <span className="badge badge-ghost badge-sm">{student?.phoneNumber}</span>
+                                            <div className="font-bold">{student?.address}</div>
+                                            <span className="badge badge-ghost badge-sm">Phn No: {student?.phoneNumber}</span>
                                         </td>
                                         <td>C.S.E</td>
                                         <th>
