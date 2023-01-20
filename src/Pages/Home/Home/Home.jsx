@@ -83,7 +83,7 @@ const Home = () => {
                                             <div className="font-bold">{student?.address}</div>
                                             <span className="badge badge-ghost badge-sm">Phn No: {student?.phoneNumber}</span>
                                         </td>
-                                        <td>C.S.E</td>
+                                        <td><div className="font-bold">{student?.department}</div></td>
                                         <th>
                                             <Link to={`/updateStudent/${student?._id}`}>
                                                 <button className="btn btn-success btn-xs font-bold">Update</button>

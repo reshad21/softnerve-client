@@ -42,9 +42,11 @@ const Dashbord = () => {
             const phoneNumber = form.phoneNumber.value;
             const email = form.email.value;
             const address = form.address.value;
+            const department = form.department.value;
 
             const studentInfo = {
                 phoneNumber,
+                department,
                 address,
                 sname,
                 fname,
@@ -111,6 +113,18 @@ const Dashbord = () => {
                                     <span className="label-text font-bold">Email Address</span>
                                 </label>
                                 <input type="email" name='email' placeholder="email address" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-bold">Select Department</span>
+                                </label>
+                                <select name="department" className="select select-bordered w-full" required>
+                                    <option disabled selected>Chose Department</option>
+                                    <option value='CSE'>CSE</option>
+                                    <option value='EEE'>EEE</option>
+                                    <option value='EEE'>BBA</option>
+                                    <option value='LLB'>LLB</option>
+                                </select>
                             </div>
                             <div className="form-control">
                                 <label className="label">
