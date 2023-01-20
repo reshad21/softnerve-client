@@ -56,7 +56,7 @@ const Dashbord = () => {
             }
             console.log(studentInfo);
 
-            fetch('http://localhost:5000/student', {
+            fetch('https://softnerve-server.vercel.app/student', {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',

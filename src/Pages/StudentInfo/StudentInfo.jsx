@@ -8,7 +8,7 @@ const StudentInfo = () => {
     const { data: student = [], isLoading } = useQuery({
         queryKey: ['student', sid],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/student/${sid}`);
+            const res = await fetch(`https://softnerve-server.vercel.app/student/${sid}`);
             const data = await res.json();
             return data;
         }

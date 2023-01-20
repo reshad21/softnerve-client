@@ -6,7 +6,7 @@ const Home = () => {
     const { data: students = [], isLoading, refetch } = useQuery({
         queryKey: ['student'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/student');
+            const res = await fetch('https://softnerve-server.vercel.app/student');
             const data = await res.json();
             return data;
         }
@@ -23,7 +23,7 @@ const Home = () => {
     const handleDelete = (student) => {
         window.confirm(`are you sure?`);
         console.log(student._id);
-        fetch(`http://localhost:5000/student/${student._id}`, {
+        fetch(`https://softnerve-server.vercel.app/student/${student._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

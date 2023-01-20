@@ -9,7 +9,7 @@ const UpdateStudent = () => {
     const { data: student = [], isLoading } = useQuery({
         queryKey: ['student', id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/student/${id}`);
+            const res = await fetch(`https://softnerve-server.vercel.app/student/${id}`);
             const data = await res.json();
             return data;
         }
@@ -46,7 +46,7 @@ const UpdateStudent = () => {
         }
         console.log(studentInfo);
 
-        fetch(`http://localhost:5000/student/${id}`, {
+        fetch(`https://softnerve-server.vercel.app/student/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
