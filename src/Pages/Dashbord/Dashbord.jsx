@@ -1,44 +1,71 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
 const Dashbord = () => {
+    const imageHostKey = 'a5fac2a6ff064bf3f80d0506b3344941';
+
     const handleProductForm = (e) => {
         e.preventDefault();
         const form = e.target;
-        const sname = form.sname.value;
-        const fname = form.fname.value;
-        const mname = form.mname.value;
-        const phoneNumber = form.phoneNumber.value;
-        const email = form.email.value;
-        const address = form.address.value;
-        const photo = form.photo.value;
 
-        const studentInfo = {
-            phoneNumber,
-            address,
-            sname,
-            fname,
-            mname,
-            email,
-            photo
-        }
-        fetch('http://localhost:5000/student', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(studentInfo),
+        // first we work with image files
+        const image = form.photo.files[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
         })
             .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-                toast.success('product added Successfully.');
+            .then((imgData) => {
+                // console.log(imgData);
+                if (imgData.success) {
+                    console.log(imgData.data.url);
+                    const photo = imgData.data.url;
+                    // second now we work other input field
+                    studentAllInfo(photo);
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
 
+        const studentAllInfo = (photo) => {
+            const sname = form.sname.value;
+            const fname = form.fname.value;
+            const mname = form.mname.value;
+            const phoneNumber = form.phoneNumber.value;
+            const email = form.email.value;
+            const address = form.address.value;
 
-        console.log(studentInfo);
+            const studentInfo = {
+                phoneNumber,
+                address,
+                sname,
+                fname,
+                mname,
+                email,
+                photo
+            }
+            console.log(studentInfo);
+
+            fetch('http://localhost:5000/student', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(studentInfo),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Success:', data);
+                    toast.success('product added Successfully.');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
     }
     return (
         <div className='mx-auto max-w-7xl'>
@@ -90,7 +117,7 @@ const Dashbord = () => {
                                 <label className="label">
                                     <span className="label-text font-bold">Photo</span>
                                 </label>
-                                <input type="text" name='photo' placeholder="Permanent address" className="input input-bordered" required />
+                                <input type="file" name='photo' className="file-input file-input-bordered w-full" required />
                             </div>
 
                             <div className="form-control mt-6">
